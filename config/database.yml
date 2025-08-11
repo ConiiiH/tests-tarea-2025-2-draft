@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: CalendarsApi_development
+
+test:
+  <<: *default
+  database: dccalendarapi_test
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
